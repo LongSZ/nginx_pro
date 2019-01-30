@@ -1,4 +1,4 @@
-#define NGX_CONFIGURE " --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_xslt_module --with-http_image_filter_module --with-http_geoip_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_degradation_module --with-http_stub_status_module --with-google_perftools_module --with-stream --with-mail=dynamic --with-pcre --with-libatomic --with-debug"
+#define NGX_CONFIGURE " --add-module=./src/module/ngx_http_hello_world_module/ --with-http_ssl_module --with-http_realip_module --with-http_addition_module --with-http_xslt_module --with-http_image_filter_module --with-http_geoip_module --with-http_sub_module --with-http_dav_module --with-http_flv_module --with-http_mp4_module --with-http_gzip_static_module --with-http_random_index_module --with-http_secure_link_module --with-http_degradation_module --with-http_stub_status_module --with-google_perftools_module --with-stream --with-mail=dynamic --with-pcre --with-libatomic --with-debug"
 
 #ifndef NGX_DEBUG
 #define NGX_DEBUG  1

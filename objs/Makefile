@@ -1,8 +1,10 @@
 
 CC =	cc
+CXX = g++
 CFLAGS =  -pipe  -O -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -g 
+CXXFLAGS = -Werror -g --std=c++14
 CPP =	cc -E
-LINK =	$(CC)
+LINK =	$(CXX)
 
 
 ALL_INCS = -I src/core \
@@ -286,6 +288,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/stream/ngx_stream_upstream_least_conn_module.o \
 	objs/src/stream/ngx_stream_upstream_zone_module.o \
 	objs/src/misc/ngx_google_perftools_module.o \
+	objs/addon/ngx_http_hello_world_module/ngx_http_hello_world_module.o \
 	objs/ngx_modules.o
 
 	$(LINK) -o objs/nginx \
@@ -443,6 +446,7 @@ objs/nginx:	objs/src/core/nginx.o \
 	objs/src/stream/ngx_stream_upstream_least_conn_module.o \
 	objs/src/stream/ngx_stream_upstream_zone_module.o \
 	objs/src/misc/ngx_google_perftools_module.o \
+	objs/addon/ngx_http_hello_world_module/ngx_http_hello_world_module.o \
 	objs/ngx_modules.o \
 	-ldl -lpthread -lcrypt -lpcre -lssl -lcrypto -ldl -lpthread -lz -lxml2 -lxslt -lexslt -lgd -lGeoIP -lprofiler -latomic_ops \
 	-Wl,-E
@@ -1534,6 +1538,13 @@ objs/src/misc/ngx_google_perftools_module.o:	$(CORE_DEPS)  \
 	$(CC) -c $(CFLAGS)  $(ALL_INCS) \
 		-o objs/src/misc/ngx_google_perftools_module.o \
 		src/misc/ngx_google_perftools_module.c
+
+
+objs/addon/ngx_http_hello_world_module/ngx_http_hello_world_module.o:	$(ADDON_DEPS) \
+	./src/module/ngx_http_hello_world_module//ngx_http_hello_world_module.cpp
+	$(CXX) -c $(CXXFLAGS)  $(ALL_INCS) \
+		-o objs/addon/ngx_http_hello_world_module/ngx_http_hello_world_module.o \
+		./src/module/ngx_http_hello_world_module//ngx_http_hello_world_module.cpp
 
 
 modules:	objs/ngx_mail_module.so

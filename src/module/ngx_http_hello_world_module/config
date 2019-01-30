@@ -1,0 +1,8 @@
+# 仅仅在configure时使用, 一般是模块名字
+ngx_addon_name=ngx_http_hello_world_module
+
+# 保存所有模块名的数组, 不能直接赋值覆盖, 因为还有其他模块在里面.
+HTTP_MODULES="$HTTP_MODULES ngx_http_hello_world_module"
+
+# 新增加模块的源码文件
+NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_http_hello_world_module.cpp"
